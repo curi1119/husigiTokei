@@ -4,3 +4,4 @@ Thumbs.db
 *.swp
 .rvmrc
 .rbenv-version
+bin-debug/

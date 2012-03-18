@@ -14,15 +14,21 @@
     <![CDATA[
 
       public function init():void{
-        this.clock.start();
+        this.clock.start(4, 3, 5);
+      }
+
+      public function start():void{
+        this.clock.start(parseInt(month.text), parseInt(week.text), parseInt(day.text));
       }
 
 
     ]]>
   </fx:Script>
 
-
-
   <components:AnimationClock id="clock" x="0" y="0"/>
-  <s:Button x="200" y="10" click="init()" />
+
+  <s:TextInput id="month" x="210" y="5" text="3" /><s:RichText x="300" y="5" text="月(1～12）" />
+  <s:TextInput id="week" x="210" y="45" text="2" /><s:RichText x="300" y="45" text="周(1～4）" />
+  <s:TextInput id="day" x="210" y="85" text="7" /><s:RichText x="300" y="85" text="日(1～7）" />
+  <s:Button x="200" y="220" label="start" click="start()" />
 </s:Application>
