@@ -1,0 +1,6 @@
+bin-debug
+Thumbs.db
+.DS_Store
+*.swp
+.rvmrc
+.rbenv-version

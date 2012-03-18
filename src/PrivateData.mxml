@@ -1,0 +1,7 @@
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<!-- このファイルには Flash Catalyst と Flash Builder で共有するメタデータが含まれています。コンパイル済みのアプリケーションには影響を与えません。 -->
+	<fx:Private>
+	</fx:Private>
+</s:Group>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark"
+     xmlns:fx="http://ns.adobe.com/mxml/2009"
+     width="200" height="200">
+
+  <fx:Script>
+    <![CDATA[
+      import caurina.transitions.Tweener;
+
+      private var _month:int;
+      public function get month():int{ return _month;}
+      public function set month(value:int):void { _month = value; }
+
+      private var _week:int;
+      public function get week():int { return _week;}
+      public function set week(value:int):void { _week = value; }
+
+      private var _day:int;
+      public function get day():int{ return _day;}
+      public function set day(value:int):void{ _day = value; }
+
+      [Embed(source="/assets/images/lamp.png")]
+      public var lamp:Class;
+
+      [Embed(source="/assets/images/star.png")]
+      public var star:Class;
+
+
+
+      public function start():void{
+        _month = 5
+        _week = 3;
+        _day= 1;
+
+        clock.transformX = clock.width / 2;
+        clock.transformY = clock.height / 2;
+        Tweener.addTween(clock, {rotation:-360*3, time:4, transition:'easeOutCubic'});
+
+        var degree:int;
+        if(_month == 12){
+          degree = 0;
+        }else{
+          degree = _month * 20;
+        }
+        hari.transformX = 5;
+        hari.transformY = 100;
+        Tweener.addTween(hari, {rotation:360*2+degree, time:4, transition:'easeInOutSine'});
+
+        var weekCount:int = _week;
+        for(var i:int=1; i <= 4; i++){
+          this["week" + i].alpha = 0;
+          if(weekCount >= 1){
+            Tweener.addTween(this["week" + i], {alpha:1.0, time:2, delay:i-1, transition:'linear'});
+            weekCount -= 1;
+          }
+        }
+
+        var dayCount:int = 7 - _day;
+        var delayArr:Array = new Array(0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0)
+        for(var i:int=7; i > 0; i--){
+          //this["day" + i].alpha = 1;
+          if(dayCount >= 1){
+            Tweener.addTween(this["day" + i], {alpha:0, time:1.5, delay:3.0-delayArr[i-1], transition:'linear'});
+            dayCount -= 1;
+          }
+        }
+      }
+
+    ]]>
+  </fx:Script>
+
+  <s:BitmapImage id="clock" x="0" y="0" smooth="true" source="@Embed('assets/images/clock.png')" />
+  <s:BitmapImage id="week4" x="50" y="50" smooth="true" source="@Embed('assets/images/star.png')" />
+  <s:BitmapImage id="week3" x="50" y="100" smooth="true" source="@Embed('assets/images/star.png')"  />
+  <s:BitmapImage id="week1" x="100" y="50" smooth="true" source="@Embed('assets/images/star.png')"  />
+  <s:BitmapImage id="week2" x="100" y="100" smooth="true" source="@Embed('assets/images/star.png')" />
+
+  <s:BitmapImage id="hari" x="90" y="0" smooth="true" source="@Embed('/assets/images/hari.png')"/>
+
+  <s:BitmapImage id="day1" x="200" y="140" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day2" x="190" y="150" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day3" x="180" y="160" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day4" x="170" y="170" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day5" x="180" y="180" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day6" x="170" y="190" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+  <s:BitmapImage id="day7" x="160" y="200" smooth="true" source="@Embed('assets/images/lamp.png')"/>
+</s:Group>
